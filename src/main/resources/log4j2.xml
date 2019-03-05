@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Configuration status="warn">
+    <Properties>
+        <Property name="projectName" value="RLMS" />
+        <Property name="logHome" value="../${projectName}/logs" />
+    </Properties>
+
+    <Appenders>
+
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5p [%c] [%M] %m%n" />
+        </Console>
+
+        <RollingFile name="${projectName}" fileName="${logHome}/${projectName}.log" filePattern="${logHome}/${projectName}.log.%d{yyyy-MM-dd}" append="true">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5p [%c] [%M] %m%n" charset="UTF-8" />
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true" />
+            </Policies>
+        </RollingFile>
+
+    </Appenders>
+
+    <Loggers>
+        <Root level="INFO">
+            <AppenderRef ref="console" />
+            <AppenderRef ref="${projectName}" />
+        </Root>
+        <Logger name="org.rlms.lucene.*" level="DEBUG" />
+        <Logger name="org.rlms.rabbitmq.*" level="DEBUG" />
+    </Loggers>
+</Configuration>
