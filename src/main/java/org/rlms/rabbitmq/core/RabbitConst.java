@@ -17,5 +17,5 @@ public class RabbitConst {
 
     public static final String CONFIG_PASSWORD = PropertiesUtil.getResourceBundle("rabbitmq.password", CONFIG_FILE);
 
-    public static final String COUSUMER_PACKAGE = "com.fareast.hbo.rabbitmq.consumer";
+    public static final String COUSUMER_PACKAGE = "org.rlms.rabbitmq.consumer";
 }
